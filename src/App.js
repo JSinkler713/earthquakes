@@ -23,7 +23,6 @@ class App extends Component {
     return (
       <div className="app">
         <div className="mapContainer">
-          ...put Map Component here..
           <GoogleMap data={this.state.earthquakes}/>
         </div>
         <div className="quakeContainer">

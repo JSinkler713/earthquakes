@@ -11,17 +11,27 @@ class MapContainer extends Component {
       <Map
         style={styles}
         google={this.props.google}
-        zoom={8}
-        initialCenter={{ lat: 45, lng: -120 }}
+        zoom={2}
+        initialCenter={{ lat: 40, lng: -110 }}
       >
-      <Marker key={1} id={1} position={{
-        lng: this.props.data[0].geometry.coordinates[0],  
-        lat: this.props.data[0].geometry.coordinates[1]  
-      }} />
+        {
+          this.props.data.map((quake, i) => {
+            return <
+              Marker
+                key={i}
+                id={i}
+                position={{
+                  lng: quake.geometry.coordinates[0],  
+                  lat: quake.geometry.coordinates[1]  
+                }}
+              />
+          })
+        }
       </Map>
     )
   }
 }
+
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'
