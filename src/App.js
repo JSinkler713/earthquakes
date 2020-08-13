@@ -20,6 +20,17 @@ class App extends Component {
   
 
   render() {
+       let earthquakes; 
+       if (this.state.earthquakes.length === 0) {
+          earthquakes =  "loading...";
+       }else {
+         earthquakes = <Earthquakes data={this.state.earthquakes} />
+       }
+         // {
+         // this.state.earthquakes.length === 0
+         // ? "loading..."
+         // : <Earthquakes data={this.state.earthquakes} />
+         // }
     return (
       <div className="app">
         <div className="mapContainer">
@@ -27,13 +38,8 @@ class App extends Component {
         </div>
         <div className="quakeContainer">
           <h1>Earthquakes from the past week: </h1>
-          {
-          this.state.earthquakes.length === 0
-          ? "loading..."
-          : <Earthquakes data={this.state.earthquakes} />
-          }
+          {earthquakes}
         </div>
-         
       </div>
     );
   }
